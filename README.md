@@ -66,3 +66,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### Bibliotecas necessarias para o app
+
+React , React DOM, React Routes , React widgets
+
+
+
+
+
+
+
+
+
