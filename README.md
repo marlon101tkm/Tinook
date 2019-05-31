@@ -70,7 +70,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### Bibliotecas necessarias para o app
 
-React , React DOM, React Routes , React widgets
+React , React DOM, React Routes , React Bootstrap
 
 
 
