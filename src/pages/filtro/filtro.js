@@ -27,25 +27,17 @@ class Filtro extends Component{
     // opGenero = genero.map((genero)=><option>{genero}</option>)
 
 
-
     /* handleSubmit = (e) =>{
          
      }*/
 
 
-
     render(){
         return(
             
-
-
-            
             <div>
             
-            <Combobox  valueField='id' textField='nome' busy busySpinner={<span>:: </span>} data={genero}/> 
 
-            <Combobox  data={nomeAutor}/> 
-   
           <form >
           <label>Distancia:</label>
           <input type="range" />
@@ -69,7 +61,6 @@ class Filtro extends Component{
         )
     }
 }
-
 
 
 /*

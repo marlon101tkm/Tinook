@@ -1,5 +1,5 @@
-import React,{Component} from "react";
-import { Card,Button } from 'react-bootstrap';
+import React,{Component} from'react';
+import { Card,Button, CardColumns, CardGroup, CardDeck } from 'react-bootstrap';
 
 
 const nome ="livro";
@@ -14,7 +14,9 @@ const idioma="portugues"
 
 class CardLivro extends Component{
 
-    
+    state={
+        titulo:nome ,genero_l: genero,condicao_l: condicao ,idioma_1: idioma
+    }
    
 
    
@@ -24,30 +26,11 @@ class CardLivro extends Component{
    
     render(){
         return(
-            /*
-            <Card >
-                <div >
-                    <div >
-                        <img src="tinook.png" class="card-img" alt="..."/>
-                    </div>
-                    <div >
-                        <div class="card-body book-info">
-                            <h5 class="card-title">Harry Potter</h5>
-                            <p class="card-text">A Ordem da Fênix</p>
-                            <p class="card-text">Fantasia, Aventura</p>
-                            <p class="card-text">Ótima condição</p>
-                            <p class="card-text">Inglês</p>
-                        </div>
-                    </div>
-                </div>
-        </Card>
-            */
-
+        
            <Card style={{ width: '18rem' }}>
-           <Card.Img variant="left" src="https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg" />
+           <Card.Img variant="top" src="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=134560&qld=90&l=430&a=-1=1004440431" />
            <Card.Body>
-             <Card.Title>Harry Potter</Card.Title>
-            
+             <Card.Title>Harry Potter {this.state.titulo} </Card.Title>
                             <Card.Text>A Ordem da Fênix</Card.Text>
                             <Card.Text >Fantasia, Aventura</Card.Text>
                             <Card.Text >Ótima condição</Card.Text>
@@ -55,6 +38,7 @@ class CardLivro extends Component{
              <Button variant="primary">Go somewhere</Button>
            </Card.Body>
          </Card>
+        
 
         )          
         

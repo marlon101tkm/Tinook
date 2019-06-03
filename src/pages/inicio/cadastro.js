@@ -2,12 +2,13 @@ import React,{Component} from "react";
 import api from "../../services/api.js";
 import {withRouter} from 'react-router-dom'
 import { async } from "q";
+import Axios from "axios";
 
  class Cadastro extends Component{
 
     state={
 
-        nome: '',sobrenome: '',usuario: '',email: '',senha: ''
+        nome: '',email: '',senha: ''
     }
 
     handleInputChange =(e)=>{
@@ -17,16 +18,21 @@ import { async } from "q";
 
     handleSubmit = async e => {
         e.preventDefault();
-        const { nome,sobrenome,usuario, email, senha } = this.state;
-        const nomeCompleto = nome +" "+ sobrenome;
-        if (!usuario || !email || !senha|| !nome || !sobrenome ) {
+        const user = {
+            nome: this.state.nome,
+            email: this.state.email,
+            senha: this.state.senha
+          };
+
+
+        if ( !user.senha || !user.email|| !user.nome ) {
          alert( "Preencha todos os dados para se cadastrar" );
         } else {
           
-            /*await*/ api.post("/tinook/api/usuario", { usuario, email, senha});
-            alert("conta criada")
-            this.props.history.push("/Perfil");
-          
+            const response= await api.post(`/usuario`,{user})
+            console.log(response);
+            console.log(response.data);
+             
         }
       };
 
@@ -35,39 +41,48 @@ import { async } from "q";
         return(       
             <div >
              
-               <form>
+               <form onSubmit={this.handleSubmit}>
                <input type='text' 
                 name='nome'
                 placeholder='Nome'
-                onChange={ this.handleInputChange}/>
-
-                <input type='text' 
-                name='sobrenome'
-                placeholder='Sobrenome'
-                onChange={ this.handleInputChange}/><br/>
-                
-
-                <input type='text' 
-                name='usuario' 
-                placeholder='Usuario' 
+                value={this.state.nome}
                 onChange={ this.handleInputChange}/><br/>
                 
                 <input type='text' 
                 name='email'
                 placeholder='Email'
+                value={this.state.email}
                 onChange={ this.handleInputChange}/><br/>
 
                 <input type='password'
                  name='senha'
                  placeholder='Senha'
-               
+                 value={this.state.senha}
                  onChange={ this.handleInputChange}/><br/>
 
-                <button    onClick={this.handleSubmit} >Cadastrar</button>
+                <button type="submit" >Cadastrar</button>
                </form>
            </div>
         )
     }
 }
 
-export default withRouter(Cadastro);
+export default (Cadastro);
+
+
+
+/*
+{
+	"edicao": "1",
+	"genero":"Fantasia",
+	"titulo": "Harry Poter e a Orden da Fenix",
+	"condicao":"Otima" ,
+	"isbn":"12332312" ,
+	"lancamento": "2009-05-03" ,
+	"sinopse": "livro legal" ,
+	"lingua": "Portugues",
+	"usuario_id": "4"
+	
+	
+}
+*/

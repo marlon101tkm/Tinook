@@ -57,4 +57,4 @@ import {withRouter} from 'react-router-dom'
     }
 }
 
-export default withRouter(Login)
+export default (Login)
