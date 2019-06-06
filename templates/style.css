@@ -1,0 +1,111 @@
+body{
+    background-color: #F8F8F8;
+    font-family: 'Bitter', serif;
+}
+
+.nav-custom{
+    font-family: 'Pacifico', cursive;
+    color: #e5474b;
+    background-color: #1c1c1c !important;
+    font-size: 1.5em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.input-login{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.cadastro{
+    /* padding-top: 100px !important; */
+    position: relative;
+}
+
+.login{
+    margin-top: 30px;
+    position: relative;
+}
+
+.btn-cadastro{
+    position: absolute;
+    left: calc(50% - 46.5px);
+    background-color: lightgray;
+}
+
+.btn-entre{
+    position: absolute;
+    left: calc(50% - 33.92px);
+    background-color: lightgray;
+}
+
+.icone{
+    position: relative;
+    border-radius: 15px;
+    width: 128px;
+    height: 128px;
+    text-align: center;
+    background-color: #e5474b;
+    margin-left: 123px;
+}
+
+.marker{
+    position: absolute;
+    color: red;
+    right: 24px;
+    top: 10px;
+    transform: scale(2.3);
+}
+
+.icone p{
+    font-family: 'Pacifico', serif;
+    font-size: 86px;
+    width: 111px;
+    height: 128px;
+    /* left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); */
+} 
+
+.menu-btn{
+    font-family: 'Bitter', cursive;
+    background-color: #1c1c1c !important;
+    color: white
+}
+
+.menu-btn:hover{
+    color: lightgray;
+}
+
+.book-info{
+    padding: 1rem;
+}
+
+.book-info p{
+    margin: 0 !important;
+}
+
+.book-card{
+    position: relative;
+    border-radius: 10px;
+    background-color: #E0E0E0;
+    border: 2px solid rgba(28,28,28,0.4);
+}
+
+.edit-icon{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.delete-icon{
+    position: absolute;
+    bottom: 15px;
+    right: 17px;
+}
+
+.plus-icon{
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+}
