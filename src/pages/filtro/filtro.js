@@ -37,7 +37,6 @@ class Filtro extends Component{
             
             <div>
             
-
           <form >
           <label>Distancia:</label>
           <input type="range" />
