@@ -70,7 +70,7 @@ body{
 .menu-btn{
     font-family: 'Bitter', cursive;
     background-color: #1c1c1c !important;
-    color: white
+    color: white !important;
 }
 
 .menu-btn:hover{
@@ -108,4 +108,12 @@ body{
     width: 100%;
     text-align: center;
     font-size: 40px;
+}
+
+.img-container{
+    max-width: 300px;
+}
+
+.img-secondary{
+    padding: 5px;
 }
