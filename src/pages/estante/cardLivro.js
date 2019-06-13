@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Button, CardColumns, CardGroup, CardDeck } from 'react-bootstrap';
-
+import { Card, Button} from 'react-bootstrap';
+import '../../style.css'
 
 const nome = "Harry Potter ea Ordem da Fenix";
 const genero = "Fantasia";
@@ -29,14 +29,14 @@ class CardLivro extends Component {
   render() {
     return (
 
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=134560&qld=90&l=430&a=-1=1004440431" />
+      <Card className='card-book'>
+        <Card.Img    src="https://culturaproximaleitura.com/wp-content/uploads/2014/06/Capa-Harry-Potter-e-a-Ordem-da-F%C3%AAnix-Livro.jpg" />
         <Card.Body>
           <Card.Title>{this.state.titulo} </Card.Title>
           <Card.Text >{this.state.genero_l}</Card.Text>
           <Card.Text >{this.state.condicao_l}</Card.Text>
           <Card.Text >{this.state.idioma_1}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          
         </Card.Body>
       </Card>
 

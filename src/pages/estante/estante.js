@@ -2,7 +2,7 @@ import React,{Component} from'react';
 import { Card,Button,  CardDeck, CardColumns } from 'react-bootstrap';
 import CardLivro from './cardLivro.js'
 import api from '../../services/api.js';
-
+import BarraNav from'../../barraNav.js'
 
 
 
@@ -44,12 +44,14 @@ class Estante extends Component{
     render(){
        
         return(
+            <div>
+                <BarraNav/>
             <CardColumns>
              
             {this.multicards(10)}
                
             </CardColumns>
-
+            </div>
         )
     }
 }

@@ -72,4 +72,3 @@ class Filtro extends Component{
 
 
  */
-export default Filtro;

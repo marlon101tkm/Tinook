@@ -2,9 +2,17 @@ import axios from "axios";
 import { getToken } from "./auth";
 
 const api = axios.create({
-  baseURL: "//localhost:5432/Tinook"
+  baseURL: 'http://localhost:8080/tinook/api',
+
 });
-/*
+
+
+
+
+
+
+
+
 api.interceptors.request.use(async config => {
   const token = getToken();
   if (token) {
@@ -12,5 +20,5 @@ api.interceptors.request.use(async config => {
   }
   return config;
 });
-*/
+
 export default api;

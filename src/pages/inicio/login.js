@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
+import { async } from 'q';
+import api from "../../services/api.js";
+import { login } from "../../services/auth";
+
 
 class Login extends Component {
     /*  constructor(props){
@@ -12,17 +16,19 @@ class Login extends Component {
       */
 
     state = {
-        usuario: '', senha: ''
+        email: '', senha: ''
     }
 
-    handleSubmit = e => {
-        const { usuario, senha } = this.state;
+    handleSubmit = async e => {
+        const { email, senha } = this.state;
         // if( !this.state.usuario || !this.state.senha ){
-        if (usuario || senha) {
+        if (email || senha) {
             e.preventDefault();
             // alert('A login usuario : ' + this.state.usuario +'\n Senha: '+this.state.senha);
+            const response = await api.post("/usuario", { email, senha });
+            //login(response.data.token);
 
-            this.props.history.push('/Perfil');
+            this.props.history.push('/perfil');
         }
 
     }
@@ -38,15 +44,15 @@ class Login extends Component {
         return (
        
 
-            <Form onSubmit={this.handleSubmit} className="p-4 container login">
+            <Form onSubmit={this.handleSubmit}  className="p-4 container login">
                 <Form.Group controlId="formBasicNome">
-                    <Form.Control value={this.state.usuario} onChange={this.handleInputChange}  name='usuario'   type="text" placeholder="Nome de usuário ou email" />
+                    <Form.Control value={this.state.email} onChange={this.handleInputChange}  name='email'   type="text" placeholder="Nome de usuário ou email" />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Control value={this.state.email} onChange={this.handleInputChange} name='senha' type="password" placeholder="Senha" />
+                    <Form.Control value={this.state.senha} onChange={this.handleInputChange} name='senha' type="password" placeholder="Senha" />
                 </Form.Group>
-                <Button  className="btn btn-light btn-entre"  variant="primary" type="submit">
+                <Button  className="btn btn-light btn-entre"  variant="entre" type="submit">
                     Entrar
                  </Button>
         
@@ -56,4 +62,4 @@ class Login extends Component {
     }
 }
 
-export default (Login)
+export default withRouter(Login)
