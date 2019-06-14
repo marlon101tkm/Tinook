@@ -51,22 +51,22 @@ import { Form, Button ,InputGroup, FormControl,Col} from 'react-bootstrap'
      
             <Form onSubmit={this.handleSubmit}  className="p-4 container cadastro">
               <Form.Row>  
-                <Form.Group className="input-group mb-4 col-xl-6" controlId="formBasicNomeCompleto">
+                <Form.Group className="input-group mb-4 col-xl-6">
                     <Form.Control  value={this.state.nome} onChange={this.handleInputChange} name="nome" type="text" placeholder="Nome Completo" />
                 </Form.Group>
              
-                 <InputGroup  className='input-group mb-4 col-xl-6' controlId="formBasicNomeUsuario">
+                 <InputGroup  className='input-group mb-4 col-xl-6'>
                     <InputGroup.Prepend>
                         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                     </InputGroup.Prepend>
                     <Form.Control name='nomeUsu' value={this.state.nomeUsu} onChange={this.handleInputChange}  type="text" placeholder="Nome de usuário " />
                 </InputGroup>
                 </Form.Row> 
-                <Form.Group class="form-group mb-4" controlId="formBasicEmail">
+                <Form.Group class="form-group mb-4">
                     <Form.Control value={this.state.email} onChange={this.handleInputChange} name='email' type="text" placeholder="Email" />
                 </Form.Group>
 
-                <Form.Group class="form-group mb-4" controlId="formBasicPassword">
+                <Form.Group class="form-group mb-4" >
                     <Form.Control value={this.state.senha} onChange={this.handleInputChange} name='senha' type="password" placeholder="Senha" />
                 </Form.Group>
                 

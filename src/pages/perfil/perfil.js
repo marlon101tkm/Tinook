@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 import BarraNav from'../../barraNav.js'
+import api from "../../services/api.js";
+import { logout } from "../../services/auth.js";
 
 const nomeU = "@joao1297";
 const nomeCom = "João";
@@ -17,6 +19,8 @@ export default class Perfil extends Component {
 
     componentDidMount(){
         
+        
+
     }
 
     handleSubmit = (e) => {
@@ -37,6 +41,7 @@ export default class Perfil extends Component {
                         <Card.Title >Nome de usuário: {this.state.nomeUsuario}</Card.Title>
                         <Card.Text >Nome: {this.state.nome}</Card.Text>
                         <Card.Text >Email: {this.state.email}</Card.Text>
+                        <Button >  </Button>
                     </Card.Body>
                 </Card>
             </div>

@@ -41,10 +41,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Inicio} />
+      
       <PrivateRoute path="/perfil" component={Perfil} />
       <Route path='/estante' component={Estante}/>
-      <Route path="*" component={() => <h1>Page not found</h1>} />
+      <Route  path='/' component={Inicio} />
     </Switch>
   </BrowserRouter>
 );

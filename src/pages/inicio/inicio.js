@@ -12,12 +12,11 @@ export default class Inicio extends Component{
     return(
       <div>  
         <BarraNav/>
-        <div>
+       
         <Cadastro />
-        </div>
-        <div>
+      
         <Login/>   
-        </div>
+        
       </div>
 
     )

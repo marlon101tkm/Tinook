@@ -33,9 +33,9 @@ class CardLivro extends Component {
         <Card.Img    src="https://culturaproximaleitura.com/wp-content/uploads/2014/06/Capa-Harry-Potter-e-a-Ordem-da-F%C3%AAnix-Livro.jpg" />
         <Card.Body>
           <Card.Title>{this.state.titulo} </Card.Title>
-          <Card.Text >{this.state.genero_l}</Card.Text>
-          <Card.Text >{this.state.condicao_l}</Card.Text>
-          <Card.Text >{this.state.idioma_1}</Card.Text>
+          <Card.Text >Genero:{this.state.genero_l}</Card.Text>
+          <Card.Text >Condição: {this.state.condicao_l}</Card.Text>
+          <Card.Text >Idioma: {this.state.idioma_1}</Card.Text>
           
         </Card.Body>
       </Card>

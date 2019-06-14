@@ -25,8 +25,8 @@ class Login extends Component {
         if (email || senha) {
             e.preventDefault();
             // alert('A login usuario : ' + this.state.usuario +'\n Senha: '+this.state.senha);
-            const response = await api.post("/usuario", { email, senha });
-            //login(response.data.token);
+            const response = await api.get("/usuario", { email, senha });
+            login(response.data.token);
 
             this.props.history.push('/perfil');
         }
@@ -52,7 +52,7 @@ class Login extends Component {
                 <Form.Group controlId="formBasicPassword">
                     <Form.Control value={this.state.senha} onChange={this.handleInputChange} name='senha' type="password" placeholder="Senha" />
                 </Form.Group>
-                <Button  className="btn btn-light btn-entre"  variant="entre" type="submit">
+                <Button /* className="btn btn-light btn-entre"*/  variant="entre" type="submit">
                     Entrar
                  </Button>
         
