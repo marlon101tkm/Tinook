@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Tinook</title>
-        <link rel="icon" type="imagem/png" href="tinook.png" />
-        <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/js/bootstrap.min.js">
-        <link rel="stylesheet" type="text/css" href="fontawesome-free-5.8.2-web/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bitter:700&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <title>Tinook</title>
+    <link rel="icon" type="imagem/png" href="tinook.png" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.8.2-web/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter:700&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-        <nav class="navbar navbar-dark nav-custom p-2">
-            <p class="m-0">TINOOK</p>
-        </nav>
-        <div class="container">
-            <div class="card mb-3 mt-5">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="tinook.png" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome de usuário: @joao1297</h5>
-                            <p class="card-text">Nome: João</p>
-                            <p class="card-text">Email: joao@gmail.com</p>
-                        </div>
-                    </div>
+<body>
+    <nav class="navbar navbar-dark nav-custom p-2">
+        <p class="m-0">TINOOK</p>
+        <div class="d-flex flex-row-reverse bd-highlight">
+            <button type="button" class="btn mr-1 menu-btn">Estante</button>
+            <button type="button" class="btn mr-1 menu-btn">Filtro</button>
+            <a href="index.html"><button type="button" class="btn mr-1 menu-btn">Perfil</button></a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-xs">
+                <img src="tinook.png" alt="..." class="img-thumbnail">
+            </div>
+            <div class="col">
+                <div class="input-group mb-4 col-xl-6">
+                    <label for="Nome">Nome:</label>
+                    <input type="text" class="form-control ml-3" aria-label="Nome"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-4 col-xl-6">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control ml-3" aria-label="email"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-4 col-xl-6">
+                    <label for="senha">Senha:</label>
+                    <input type="text" class="form-control ml-3" aria-label="Senha"
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
-    </body>
+        <div class="row mt-2">
+            <!-- <div class="col"> -->
+                <div class="col-md-3 mb-2 text-center">
+                    <button type="button" class="btn btn-danger">Editar</button>
+                </div>
+                <div class="col-md-3 mb-2 text-center">
+                    <button type="button" class="btn btn-danger">Mudar senha</button>
+                </div>
+                <div class="col-md-3 mb-2 text-center">
+                    <button type="button" class="btn btn-danger">Deletar conta</button>
+                </div>
+                <div class="col-md-3 mb-2 text-center">
+                    <button type="button" class="btn btn-danger">Congelar conta</button>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</body>
 
 </html>
