@@ -1,38 +1,31 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
-import { async } from 'q';
+
 import api from "../../services/api.js";
 import { login } from "../../services/auth";
 
 
 class Login extends Component {
-    /*  constructor(props){
-           super(props);
-           this.state={
-               usuario: '',senha: ''
-           }
-      }
-      */
+   
 
     state = {
         email: '', senha: ''
     }
 
+
+    //login ainda não esta funcionado
     handleSubmit = async e => {
         const { email, senha } = this.state;
-        // if( !this.state.usuario || !this.state.senha ){
         if (email || senha) {
             e.preventDefault();
-            // alert('A login usuario : ' + this.state.usuario +'\n Senha: '+this.state.senha);
             const response = await api.get("/usuario", { email, senha });
             login(response.data.token);
 
             this.props.history.push('/perfil');
+            console.log(response.data.email);
         }
 
     }
-
     handleInputChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -42,22 +35,18 @@ class Login extends Component {
 
     render() {
         return (
-       
 
-            <Form onSubmit={this.handleSubmit}  className="p-4 container login">
-                <Form.Group controlId="formBasicNome">
-                    <Form.Control value={this.state.email} onChange={this.handleInputChange}  name='email'   type="text" placeholder="Nome de usuário ou email" />
-                </Form.Group>
-
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Control value={this.state.senha} onChange={this.handleInputChange} name='senha' type="password" placeholder="Senha" />
-                </Form.Group>
-                <Button /* className="btn btn-light btn-entre"*/  variant="entre" type="submit">
-                    Entrar
-                 </Button>
-        
-            </Form>
-
+            <div class="p-4 container login">
+            <div class="row">
+                <div class="input-group mb-4 input-login">
+                    <input type="text" class="form-control" placeholder="Nome de usuário ou email" aria-label="NomeCompleto" aria-describedby="basic-addon1" value={this.state.email} onChange={this.handleInputChange} />
+                </div>
+                <div class="input-group mb-4 input-login">
+                    <input type="text" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1"value={this.state.senha} onChange={this.handleInputChange} />
+                </div>
+            </div>
+            <button type="button" class="btn btn-light btn-entre">Entrar</button>
+        </div>
         )
     }
 }

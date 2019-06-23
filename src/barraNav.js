@@ -1,46 +1,66 @@
 import React,{Component} from 'react';
-import {  Navbar, Button ,Nav, ButtonGroup,Image} from 'react-bootstrap';
 import './style.css'
-import { withRouter,Link } from 'react-router-dom'
-import Form from 'react-bootstrap/FormControl';
-import tinook from './tinook.png'
+import { withRouter} from 'react-router-dom'
 import { logout } from "./services/auth.js";
+
 
 class BarraNav extends Component {
 
     
-        retornaIndex(){
+    //funçoes de navegação chamadas em cada botao da barra
+
+
+        retornaIndex=  (e) => {
+            e.preventDefault();
             logout()
             this.props.history.push('/');
         }
 
+        
+    navegaEstante =  (e) => {
+        e.preventDefault();
+        this.props.history.push('/estante');
+    }
+
+    navegaPerfil =  (e) => {
+        e.preventDefault();
+        this.props.history.push('/perfil');
+    }
+
+    navegaFiltro =  (e) => {
+        e.preventDefault();
+        this.props.history.push('/filtro');
+    }
 
     
     
 
     renderiza(){
-        
-        if(this.props.location.pathname == '/'){
+        const lugar = this.props.location.pathname;  
+
+        //resnderização condicional barra vazia no index e barra com botões no resto das paginas
+        if(lugar === '/'){
             return (
                
-
-                <Navbar  variant='custom'>
-                <Navbar.Brand><Image src={tinook} width="40" height="40" /> {'Tinook'} </Navbar.Brand>
-                </Navbar>
+              
+                <nav class="navbar navbar-dark nav-custom p-2">
+                    <p class="m-0">TINOOK</p>
+                </nav>
             )
         }else{
 
             return (
-                <Navbar /*className='navbar-custom'*/  variant='custom'>
-                <Navbar.Brand><Image src={tinook} width="40" height="40" /> {'Tinook'} </Navbar.Brand>
-                <ButtonGroup  >
-                    <Button  variant='menu'  >Estante</Button>
-                    <Button  variant='menu'  >Filtro</Button>
-                    <Button  variant='menu' >Perfil</Button>
-                </ButtonGroup>
-                <Button onClick={this.retornaIndex()}  >Logout</Button>
 
-            </Navbar>
+                <nav class="navbar navbar-dark nav-custom p-2">
+                    <p class="m-0">TINOOK</p>
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <button type="button" class="btn mr-1 menu-btn" onClick={this.navegaEstante} >Estante</button>
+                        <button type="button" class="btn mr-1 menu-btn"onClick={this.navegaFiltro}>Filtro</button>
+                        <button type="button" class="btn mr-1 menu-btn"onClick={this.navegaPerfil}>Perfil</button>
+                    </div>
+                </nav>
+
+
 
             )
         }
@@ -57,18 +77,7 @@ class BarraNav extends Component {
             <div>
             {this.renderiza()}
             </div>
-            /*
-          
-                <Navbar   variant='custom'>
-                    <Navbar.Brand><Image src={tinook} width="40" height="40" /> {'Tinook'} </Navbar.Brand>
-                    <ButtonGroup  >
-                        <Button  variant='menu'  >Estante</Button>
-                        <Button  variant='menu'  >Filtro</Button>
-                        <Button  variant='menu' >Perfil</Button>
-                    </ButtonGroup>
-
-                </Navbar>
-         */  
+           
         )
     }
 
@@ -77,4 +86,3 @@ class BarraNav extends Component {
 }
 
 export default withRouter(BarraNav); 
-//export default BarraNav; 

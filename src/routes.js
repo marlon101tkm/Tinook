@@ -3,7 +3,8 @@ import React from 'react';
 import Inicio from './pages/inicio/inicio.js'
 import Perfil from './pages/perfil/perfil.js'
 import Estante from './pages/estante/estante.js'
-
+import Filtro from './pages/filtro/filtro.js'
+import PerfilLivro from './pages/perfil_livro/perfilLivro.js'
 
 /*
 
@@ -41,12 +42,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      
-      <PrivateRoute path="/perfil" component={Perfil} />
-      <Route path='/estante' component={Estante}/>
-      <Route  path='/' component={Inicio} />
+
+    <Route path="/perfilLivro" component={PerfilLivro} />
+      <Route path="/filtro" component={Filtro} />
+      <Route path="/perfil" component={Perfil} />
+      <Route path='/estante' component={Estante} />
+      <Route exact path='/' component={Inicio} />
+
     </Switch>
   </BrowserRouter>
 );
 
 export default Routes;
+
+/*<PrivateRoute path="/perfil" component={Perfil} />
+ <Route exact path='/' component={Inicio} />
+*/
