@@ -16,129 +16,27 @@
     <nav class="navbar navbar-dark nav-custom p-2">
         <p class="m-0">TINOOK</p>
         <div class="d-flex flex-row-reverse bd-highlight">
-            <button type="button" class="btn mr-1 menu-btn">Livros</button>
+            <button type="button" class="btn mr-1 menu-btn">Estante</button>
             <button type="button" class="btn mr-1 menu-btn">Filtro</button>
-            <button type="button" class="btn mr-1 menu-btn">Perfil</button>
+            <a href="index.html"><button type="button" class="btn mr-1 menu-btn">Perfil</button></a>
         </div>
     </nav>
-
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card mt-5 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mt-5 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card mt-5 book" style="width: 18rem;">
+            <img src="tinook.png" class="card-img-top" alt="...">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item book-title">Harry Potter</li>
+                <li class="list-group-item">A ordem da Fênix</li>
+                <li class="list-group-item">5 km</li>
+                <li class="list-group-item">Condição: Boa</li>
+            </ul>
         </div>
         <div class="row">
-            <div class="col">
-                <div class="card mt-3 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mt-3 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card mt-3 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mt-3 book-card" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="tinook.png" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body book-info">
-                                <h5 class="card-title">Harry Potter</h5>
-                                <p class="card-text">A Ordem da Fênix</p>
-                                <p class="card-text">Fantasia, Aventura</p>
-                                <p class="card-text">Ótima condição</p>
-                                <p class="card-text">Inglês</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button type="button" class="btn btn-outline-success col m-3">Sim</button>
+            <button type="button" class="btn btn-outline-danger col m-3">Não</button>  
+            <button type="button" class="btn btn-outline-primary col m-3">Já li</button>      
         </div>
     </div>
-
 </body>
 
 </html>
