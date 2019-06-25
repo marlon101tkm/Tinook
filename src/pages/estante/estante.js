@@ -187,7 +187,7 @@ class Estante extends Component{
                 <BarraNav />
                 <div class="container">
                     
-                    <CardColumns>
+                    <div class="card-columns">
 
                         {this.state.lista_info}
 
@@ -200,7 +200,7 @@ class Estante extends Component{
                                 </div>
                             </div>
                         </div>
-                    </CardColumns>
+                    </div>
                 </div>
 
             </div>
