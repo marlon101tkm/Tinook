@@ -1,12 +1,7 @@
-import React,{Component} from'react';
-import { CardColumns } from 'react-bootstrap';
-import CardLivro from './cardLivro.js'
+import React ,{Component} from 'react';
+import '../../style.css'
+import CardLivroBusca from './cardLivroBusca.js'
 import BarraNav from'../../barraNav.js'
-import api from '../../services/api.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPlus } from '@fortawesome/free-solid-svg-icons'
-
-
 
 
 var lista_infoE = [
@@ -118,113 +113,87 @@ var lista_infoE = [
         imagen: "https://livrosdefantasia.files.wordpress.com/2012/04/o-retorno-do-rei.jpg",
         autor: "J.R.R. Tokien"
     }
+   
 
-    
 ];
 
-//var qtd_livro ;
-class Estante extends Component{
-   
+
+
+
+class Busca extends Component{
+    
     constructor(props){
         super(props)
        
         this.state={
-            lista_cards: [],
-           lista_info: []
+            card_livro : [],
+           lista_info :  [],
+           index: 0
             
         }
+
+        this.proximoLivro = this.proximoLivro.bind(this);
        
     }
 
-
-
-     //teste com as variaveis globais desse componente
     
-
     componentDidMount() {
         
         var lista =[]; 
         for (var livro in lista_infoE) {
 
-         lista.push(<CardLivro titulo={lista_infoE[livro].titulo}
+         lista.push(<CardLivroBusca titulo={lista_infoE[livro].titulo}
             subtitulo={lista_infoE[livro].subtitulo}
             genero={lista_infoE[livro].genero}
             condicao={lista_infoE[livro].condicao}
             idioma={lista_infoE[livro].idioma}
-            imagen={lista_infoE[livro].imagen}
-            autor={lista_infoE[livro].autor}/> )
+            autor={lista_infoE[livro].autor}
+            imagen={lista_infoE[livro].imagen}/> )
          
          
         }
         this.setState({lista_info: lista})
         
     }
+    /*
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.lista_info !== prevProps.lista_info) {
+         
+        }
+      }
+*/
 
 
+    proximoLivro() {
+        if (this.state.index == this.state.lista_info.length - 1)
+            return;
+
+        this.setState(prevState => ({
+            index: prevState.index + 1
+        }))
+    }
     
 
 
-/*
-
-    //preenchimento da lista com a requisição no banco sem autenticação de usuario
-    componentDidMount() {
-       
-        var lista =[]; 
-        api.get(`/livro`).then(res =>{
-            
-             const lista_info = res.data;
-             console.log(lista_info.titulo);
-             
-             for (var livro in lista_info) {
-     
-              lista.push(<CardLivro titulo={lista_info[livro].titulo}
-                 subtitulo={lista_info[livro].subtitulo}
-                 genero={lista_info[livro].genero}
-                 condicao={lista_info[livro].condicao}
-                 idioma={lista_info[livro].lingua}
-                 imagen={lista_info[livro].imagen}/> )
-              
-              
-             }
-             this.setState({lista_info: lista})
-        })  
-        
 
 
-
-      }
-   */
-
-
-      /*estou utilizando o card columns pq ele organiza os cards automaticamente senão teria que implementar
-        todo um tratamento para organizar as colunas */
     render() {
-
+        const {lista_info, index} = this.state;
         return (
-            <div>
+            <div >
                 <BarraNav />
-                <div class="container">
-                    
-                    <div class="card-columns">
-
-                        {this.state.lista_info}
-
-                        <div class="col">
-                            <div class="card mt-3 book-card" style={{ maxWidth: "540px" }}>
-                                <div class="row no-gutters">
-                                    <div class="col-md-12">
-                                        <button class="fas fa-plus plus-icon"><FontAwesomeIcon icon={faPlus}/></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div className="container">
+                    {lista_info[index]}
+                    <div class="row">
+                        <button type="button" onClick={this.proximoLivro} class="btn btn-outline-success col m-3">Sim</button>
+                        <button type="button" class="btn btn-outline-danger col m-3">Não</button>
+                        <button type="button" class="btn btn-outline-primary col m-3">Já li</button>
                     </div>
                 </div>
-
             </div>
-
         )
     }
 }
-        
-export default Estante;
+
+export default Busca;

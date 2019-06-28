@@ -17,10 +17,11 @@ class CardLivro extends Component{
       genero = this.props.genero,
       condicao = this.props.condicao,
       idioma = this.props.idioma,
-      imagen = this.props.imagen
+      imagen = this.props.imagen,
+      autor = this.props.autor
     return (
 
-      <div class="card mt-5 book-card" style={{ maxWidth: 540 }}>
+      <div class="card mt-5 book-card" style={{ maxWidth: "540px" }}>
         <div class="row no-gutters">
           <div class="col-md-4">
             <img src={imagen} class="card-img" alt="..." />
@@ -30,11 +31,15 @@ class CardLivro extends Component{
 
               <button class="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
               <button class="fas fa-trash-alt delete-icon"><FontAwesomeIcon icon={faTrashAlt} /> </button>
-              <h5 class="card-title">{titulo}</h5>
+              <h6 class="card-title">{titulo}</h6>
               <h6 class="card-title">{subtitulo}</h6>
+              <p class="card-text">Autor:{autor}</p>
               <p class="card-text"> Genero:{genero}</p>
               <p class="card-text">Condição:{condicao}</p>
               <p class="card-text">idioma:{idioma}</p>
+             
+
+
             </div>
           </div>
         </div>
