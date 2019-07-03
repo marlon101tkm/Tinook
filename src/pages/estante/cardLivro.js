@@ -2,13 +2,57 @@ import React ,{Component} from 'react';
 import '../../style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit , faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { async } from 'q';
+import api from '../../services/api.js'
 
 
 
 
-class CardLivro extends Component{
+
+class  CardLivro extends Component{
     
+    state={
+      id: "", isbn:""
+    }
+  
+
+  deletaLivro = async (e) => {
+    var id_livro_foto
+    try {
+      await api.get("/livro_foto").then(res => {
+        const lista_livro = res.data;
+        for (var i in lista_livro) {
+          if (lista_livro[i].isbn == this.state.isbn) {
+              id_livro_foto = lista_livro[i].id
+          }
+        }
+      })
+      console.log(id_livro_foto)
+    } catch (err) {
+      console.log(err)
+    }
+
+    try {
+      await api.delete("/livro_foto", { id: id_livro_foto })
+    } catch (err) {
+      console.log(err)
+    }
+
+    try {
+      await api.delete("/livro", { id: this.state.id })
+    } catch (err) {
+      console.log(err)
+    }
+
+
+  }
     
+
+  componentDidMount(){
+    this.setState({id: this.props.id})
+    this.setState({isbn: this.props.isbn})
+  }
+
 
   render() {
     // definindo constantes para poder ser acessada pelo componente pai e passadas por parametro para esse componente
@@ -18,25 +62,29 @@ class CardLivro extends Component{
       condicao = this.props.condicao,
       idioma = this.props.idioma,
       imagen = this.props.imagen,
-      autor = this.props.autor
+      autor = this.props.autor,
+      id =this.props.id,
+      isbn=this.props.isbn
+     
+
     return (
 
-      <div class="card mt-5 book-card" style={{ maxWidth: "540px" }}>
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src={imagen} class="card-img" alt="..." />
+      <div className ="card mt-5 book-card" style={{ maxWidth: "540px" }}>
+        <div className ="row no-gutters">
+          <div className ="col-md-4">
+            <img src={imagen} className ="card-img" alt="..." />
           </div>
-          <div class="col-md-8">
-            <div class="card-body book-info">
+          <div className ="col-md-8">
+            <div className ="card-body book-info">
 
-              <button class="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
-              <button class="fas fa-trash-alt delete-icon"><FontAwesomeIcon icon={faTrashAlt} /> </button>
-              <h6 class="card-title">{titulo}</h6>
-              <h6 class="card-title">{subtitulo}</h6>
-              <p class="card-text">Autor:{autor}</p>
-              <p class="card-text"> Genero:{genero}</p>
-              <p class="card-text">Condição:{condicao}</p>
-              <p class="card-text">idioma:{idioma}</p>
+              <button className ="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
+              <button className ="fas fa-trash-alt delete-icon"  onClick={this.deletaLivro} ><FontAwesomeIcon icon={faTrashAlt} /> </button>
+              <h6 className ="card-title">{titulo}</h6>
+              <h6 className ="card-title">{subtitulo}</h6>
+              <p className ="card-text">Autor:{autor}</p>
+              <p className ="card-text"> Genero:{genero}</p>
+              <p className ="card-text">Condição:{condicao}</p>
+              <p className ="card-text">idioma:{idioma}</p>
              
 
 

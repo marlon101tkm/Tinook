@@ -1,11 +1,10 @@
 import React,{Component} from'react';
-import { CardColumns } from 'react-bootstrap';
 import CardLivro from './cardLivro.js'
 import BarraNav from'../../barraNav.js'
 import api from '../../services/api.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import '../../style.css'
 
 
 
@@ -123,7 +122,7 @@ var lista_infoE = [
 ];
 
 //var qtd_livro ;
-class Estante extends Component{
+class  Estante extends Component{
    
     constructor(props){
         super(props)
@@ -139,7 +138,7 @@ class Estante extends Component{
 
 
      //teste com as variaveis globais desse componente
-    
+    /*
 
     componentDidMount() {
         
@@ -161,59 +160,64 @@ class Estante extends Component{
     }
 
 
-    
+    */
 
 
-/*
+
 
     //preenchimento da lista com a requisição no banco sem autenticação de usuario
     componentDidMount() {
-       
         var lista =[]; 
-        api.get(`/livro`).then(res =>{
-            
+
+        api.get('/livro')
+        .then(res =>{
              const lista_info = res.data;
              console.log(lista_info.titulo);
-             
-             for (var livro in lista_info) {
-     
-              lista.push(<CardLivro titulo={lista_info[livro].titulo}
-                 subtitulo={lista_info[livro].subtitulo}
-                 genero={lista_info[livro].genero}
-                 condicao={lista_info[livro].condicao}
-                 idioma={lista_info[livro].lingua}
-                 imagen={lista_info[livro].imagen}/> )
+             for (var i in lista_info) {
+                
+               if(lista_info[i].usuario_id === 1){
+
+            
+              lista.push(<CardLivro titulo={lista_info[i].titulo}
+                 subtitulo={lista_info[i].subtitulo}
+                 genero={lista_info[i].genero}
+                 condicao={lista_info[i].condicao}
+                 idioma={lista_info[i].lingua}
+                 imagen={lista_info[i].imagen}
+                 id={lista_info[i].id}/> )
               
-              
+               }
              }
              this.setState({lista_info: lista})
+
         })  
-        
-
-
-
       }
-   */
-
+   
+      cadastraLivro =  (e) => {
+            e.preventDefault();
+            this.props.history.push('/perfilLivro');
+        }
+      
 
       /*estou utilizando o card columns pq ele organiza os cards automaticamente senão teria que implementar
         todo um tratamento para organizar as colunas */
-    render() {
+
+    render(){
 
         return (
             <div>
                 <BarraNav />
-                <div class="container">
+                <div className ="container">
                     
-                    <div class="card-columns">
+                    <div className ="card-columns">
 
                         {this.state.lista_info}
 
-                        <div class="col">
-                            <div class="card mt-3 book-card" style={{ maxWidth: "540px" }}>
-                                <div class="row no-gutters">
-                                    <div class="col-md-12">
-                                        <button class="fas fa-plus plus-icon"><FontAwesomeIcon icon={faPlus}/></button>
+                        <div className ="col">
+                            <div className ="card mt-3 book-card" style={{ maxWidth: "540px" }}>
+                                <div className ="row no-gutters">
+                                    <div className ="col-md-12">
+                                        <button className ="fas fa-plus plus-icon" onClick={this.cadastraLivro} ><FontAwesomeIcon icon={faPlus}/></button>
                                     </div>
                                 </div>
                             </div>

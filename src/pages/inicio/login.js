@@ -3,29 +3,65 @@ import { withRouter } from 'react-router-dom'
 
 import api from "../../services/api.js";
 import { login } from "../../services/auth";
-
+import '../../style.css'
 
 class Login extends Component {
    
 
     state = {
-        email: '', senha: ''
+        username: '', senha: ''
     }
+
+   
+
 
 
     //login ainda não esta funcionado
-    handleSubmit = async e => {
-        const { email, senha } = this.state;
-        if (email || senha) {
-            e.preventDefault();
-            const response = await api.get("/usuario", { email, senha });
-            login(response.data.token);
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        const { username, senha } = this.state;
+        console.log(username)
+        if (username || senha) {
+            /*
+            try {
+                await api.get("/usuario").then(res =>{
+                    
+                    const lista_user = res.data;
+                    for (var i in lista_user) {
+                        if(lista_user[i].username === username && lista_user[i].senha===senha){
+                            localStorage.setItem("user_id",lista_user[i].id);
+                        }
+                   
+                    }
+                    this.props.history.push("/perfil");
+                })    
+            } catch (err) {
 
-            this.props.history.push('/perfil');
-            console.log(response.data.email);
+               
+             }
+             alert("usuario não existe")
+            */
+            try {
+                 await api.post("/usuario/login", { username, senha }).then(res =>{
+                    
+                
+                login(res.data.token);
+                console.log(res.data)
+               // this.props.history.push("/perfil");
+
+                 })
+              } catch (err) {
+                console.log(err)
+              }
+        
         }
 
     }
+
+
+
+
+
     handleInputChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -36,17 +72,17 @@ class Login extends Component {
     render() {
         return (
 
-            <div class="p-4 container login">
-            <div class="row">
-                <div class="input-group mb-4 input-login">
-                    <input type="text" class="form-control" placeholder="Nome de usuário ou email" aria-label="NomeCompleto" aria-describedby="basic-addon1" value={this.state.email} onChange={this.handleInputChange} />
+            <form className = "p-4 container login" onSubmit={this.handleSubmit} >
+            <div className = "row">
+                <div className = "input-group mb-4 input-login">
+                    <input type="text" className= "form-control" placeholder="Nome de usuário" aria-label="NomeCompleto" aria-describedby="basic-addon1" name="username" /*value={this.state.username}*/ onChange={this.handleInputChange} />
                 </div>
-                <div class="input-group mb-4 input-login">
-                    <input type="text" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1"value={this.state.senha} onChange={this.handleInputChange} />
+                <div className = "input-group mb-4 input-login">
+                    <input type="password" className = "form-control" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1" name="senha" /*value={this.state.senha}*/ onChange={this.handleInputChange} />
                 </div>
             </div>
-            <button type="button" class="btn btn-light btn-entre">Entrar</button>
-        </div>
+            <button type= "submit"  className = "btn btn-light btn-entre"  >Entrar</button>
+        </form>
         )
     }
 }

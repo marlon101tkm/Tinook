@@ -32,6 +32,13 @@ class BarraNav extends Component {
         this.props.history.push('/filtro');
     }
 
+    navegaBusca =  (e) => {
+        e.preventDefault();
+        this.props.history.push('/busca');
+    }
+
+    
+
     
     
 
@@ -43,20 +50,22 @@ class BarraNav extends Component {
             return (
                
               
-                <nav class="navbar navbar-dark nav-custom p-2">
-                    <p class="m-0">TINOOK</p>
+                <nav className="navbar navbar-dark nav-custom p-2">
+                    <p className="m-0">TINOOK</p>
                 </nav>
             )
         }else{
 
             return (
 
-                <nav class="navbar navbar-dark nav-custom p-2">
-                    <p class="m-0">TINOOK</p>
-                    <div class="d-flex flex-row-reverse bd-highlight">
-                        <button type="button" class="btn mr-1 menu-btn" onClick={this.navegaEstante} >Estante</button>
-                        <button type="button" class="btn mr-1 menu-btn"onClick={this.navegaFiltro}>Filtro</button>
-                        <button type="button" class="btn mr-1 menu-btn"onClick={this.navegaPerfil}>Perfil</button>
+                <nav className="navbar navbar-dark nav-custom p-2">
+                    <p className="m-0">TINOOK</p>
+                    <div className="d-flex flex-row-reverse bd-highlight">
+                        <button type="button" className="btn mr-1 menu-btn" onClick={this.retornaIndex} >Sair</button>
+                        <button type="button" className="btn mr-1 menu-btn" onClick={this.navegaEstante} >Estante</button>
+                        <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaFiltro}>Filtro</button>
+                        <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaPerfil}>Perfil</button>
+                        <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaBusca}>Busca</button>
                     </div>
                 </nav>
 

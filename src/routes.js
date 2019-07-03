@@ -6,23 +6,9 @@ import Estante from './pages/estante/estante.js'
 import Filtro from './pages/filtro/filtro.js'
 import PerfilLivro from './pages/perfil_livro/perfilLivro.js'
 import Busca from './pages/busca/busca.js'
+import ListaMatch from './pages/match/listaMatch.js'
 
-/*
 
-const Routes =() =>(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/'  component={Inicio}/>
-            <Route path='/perfil' component={Perfil}/>
-            <Route path='/estante' component={Estante}/>
-        </Switch>
-
-    </BrowserRouter>
-)
-
-export default Routes
-
-*/
 
 
 import { isAuthenticated } from "./services/auth";
@@ -43,7 +29,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-
+      
+      <Route path="/match"component={ListaMatch}/>
       <Route path="/busca"component={Busca}/>
       <Route path="/perfilLivro" component={PerfilLivro} />
       <Route path="/filtro" component={Filtro} />

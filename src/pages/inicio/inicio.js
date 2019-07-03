@@ -12,14 +12,14 @@ export default class Inicio extends Component{
     return(
       <div>
         <BarraNav />
-        <div class='container'>
-          <div class="row">
-            <div class="col">
+        <div className='container'>
+          <div className="row">
+            <div className="col">
 
             </div>
-            <div class="col">
-              <h1 class="ml-4 mt-3">Cadastre-se!</h1>
-              <div class="mr-3">
+            <div className="col">
+              <h1 className="ml-4 mt-3">Cadastre-se!</h1>
+              <div className="mr-3">
                 <Cadastro />
 
                 <Login />

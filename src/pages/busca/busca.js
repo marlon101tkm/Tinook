@@ -2,6 +2,8 @@ import React ,{Component} from 'react';
 import '../../style.css'
 import CardLivroBusca from './cardLivroBusca.js'
 import BarraNav from'../../barraNav.js'
+import api from '../../services/api.js'
+import { async } from 'q';
 
 
 var lista_infoE = [
@@ -120,7 +122,7 @@ var lista_infoE = [
 
 
 
-class Busca extends Component{
+class  Busca extends Component{
     
     constructor(props){
         super(props)
@@ -136,6 +138,49 @@ class Busca extends Component{
        
     }
 
+
+    componentDidMount() {
+       
+        var lista =[]; 
+        api.get('/livro',{
+        })
+        .then(res =>{
+            
+             const lista_info = res.data;
+             console.log(lista_info.titulo);
+             
+             for (var livro in lista_info) {
+                
+               if(lista_info[livro].usuario_id !== 2){
+
+            
+              lista.push(<CardLivroBusca titulo={lista_info[livro].titulo}
+                 subtitulo={lista_info[livro].subtitulo}
+                 genero={lista_info[livro].genero}
+                 condicao={lista_info[livro].condicao}
+                 idioma={lista_info[livro].lingua}
+                 imagen={lista_info[livro].imagen}
+                 id ={lista_info[livro].id}
+                 usuario_id ={lista_info[livro].usuario_id} /> )
+              
+               }
+             }
+             this.setState({lista_info: lista});
+             this.setState({card_livro: res.data});
+
+
+
+
+
+        })  
+        
+
+
+
+      }
+
+
+    /*
     
     componentDidMount() {
         
@@ -155,6 +200,11 @@ class Busca extends Component{
         this.setState({lista_info: lista})
         
     }
+
+
+    */
+
+    
     /*
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
@@ -166,7 +216,7 @@ class Busca extends Component{
 
 
     proximoLivro() {
-        if (this.state.index == this.state.lista_info.length - 1)
+        if (this.state.index === this.state.lista_info.length - 1)
             return;
 
         this.setState(prevState => ({
@@ -175,6 +225,40 @@ class Busca extends Component{
     }
     
 
+    darLike = async (e)=> {     
+        e.preventDefault();
+        
+        const {card_livro,index} = this.state
+        //console.log(card_livro[index].nome);
+        try{
+            await api.post('/gostei',{
+                livro_id: card_livro[index].id, 
+                usuario_id:  card_livro[index].usuario_id,
+                data_gostei: new Date()    
+            });
+            this.proximoLivro();
+        }catch(err) {
+            console.log(err);
+
+        }
+        
+    }
+
+    jaLeu= async (e)=> {     
+        e.preventDefault();
+        const {card_livro,index} = this.state
+        //console.log(card_livro[index].nome);
+        try{
+            await api.post('/leu',{
+                isbn: card_livro[index].isbn, 
+                usuario_id:  card_livro[index].usuario_id });
+            this.proximoLivro();
+        }catch(err) {
+            console.log(err);
+
+        }
+        
+    }
 
 
 
@@ -183,12 +267,13 @@ class Busca extends Component{
         return (
             <div >
                 <BarraNav />
-                <div className="container">
+                <div className ="container">
                     {lista_info[index]}
-                    <div class="row">
-                        <button type="button" onClick={this.proximoLivro} class="btn btn-outline-success col m-3">Sim</button>
-                        <button type="button" class="btn btn-outline-danger col m-3">Não</button>
-                        <button type="button" class="btn btn-outline-primary col m-3">Já li</button>
+                    <div className ="row">
+                        
+                        <button type="button" onClick={this.proximoLivro} className ="btn btn-outline-danger col m-3">Não</button>
+                        <button type="button" onClick={this.jaLeu} className ="btn btn-outline-primary col m-3">Já li</button>
+                        <button type="button" onClick={this.darLike} className ="btn btn-outline-success col m-3">Gostei</button>
                     </div>
                 </div>
             </div>
