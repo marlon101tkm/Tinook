@@ -8,8 +8,8 @@ import BarraNav from'../../barraNav.js'
 export default class Inicio extends Component{
   
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
         <BarraNav />
         <div className='container'>

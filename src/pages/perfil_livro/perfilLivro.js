@@ -10,26 +10,21 @@ class  PerfilLivro extends Component{
 
         state={
             titulo: '',isbn:'',autor:'',edicao:'',genero:'',condicao:'',lingua:'' , arq_selecionado: null
-
         }
-
         fileSelectedHandler = (e)=>{
             this.setState({arq_selecionado: e.target.files[0]})
         }
-
         handleInputChange = (e) => {
             this.setState({ [e.target.name]: e.target.value });
         }
-    
-
-
-
+        
+        //não esta iserindo todos os campos 
         cadastraLivro = async (e)=>{
             e.preventDefault();
             var livro_id, autor_id;
             const { titulo, isbn, autor, edicao, genero ,condicao, arq_selecionado,lingua } = this.state;
           
-            if (titulo || isbn || autor || edicao || genero || condicao||lingua) {
+            if (titulo && isbn && autor && edicao && genero && condicao && lingua) {
                 // insere na tabela livro
                 try {
                     await api.post("/livro", { titulo, isbn, edicao, genero,lingua,usuario_id: 1 })
@@ -42,8 +37,11 @@ class  PerfilLivro extends Component{
                     await api.get("/livro").then(res => {
                         const lista_livro = res.data;
                         for (var i in lista_livro) {
+                            console.log("isbn lista:"+ lista_livro[i].isbn)
+                            console.log("isbn input:"+isbn)
                             if (lista_livro[i].isbn === isbn ) {
                                 livro_id = lista_livro[i].id
+                                console.log("id livro"+livro_id)
                             }
                         }
                     })
@@ -59,6 +57,7 @@ class  PerfilLivro extends Component{
                         for (var i in lista_autor) {
                             if (lista_autor[i].nome === autor ) {
                                 autor_id = lista_autor[i].id
+                                //console.log("ID autor"+autor_id)
                             }
                         }
                     })
@@ -105,45 +104,45 @@ class  PerfilLivro extends Component{
                                 <div className="col-xs p-5 info-book-section">
                                     <div className="row">
                                     <div className="col-sm">
-                                            <label for="basic-url">Foto</label>
+                                            <label >Foto</label>
                                             <input type="file" className="form-control" id="basic-url" aria-describedby="basic-addon3" />
                                         </div>
                                         <div className="col-sm">
-                                            <label for="basic-url">I.S.B.N</label>
+                                            <label >I.S.B.N</label>
                                             <input type="text" className="form-control" id="basic-url"   aria-describedby="basic-addon3" name="isbn"  onChange={this.handleInputChange} />
                                         </div>
                                         <div className="col-sm">
-                                            <label for="basic-url">Idioma</label>
+                                            <label >Idioma</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name="lingua"   onChange={this.handleInputChange} />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-sm">
-                                            <label for="basic-url">Título</label>
+                                            <label >Título</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name="titulo"  onChange={this.handleInputChange} />
                                         </div>
                                         <div className="col-sm">
-                                            <label for="basic-url">Condição</label>
+                                            <label >Condição</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name="condicao"   onChange={this.handleInputChange}/>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-sm">
-                                            <label for="basic-url">Número da edição</label>
+                                            <label >Número da edição</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name="edicao"   onChange={this.handleInputChange}/>
                                         </div>
                                         <div className="col-sm">
-                                            <label for="basic-url">Gênero</label>
+                                            <label >Gênero</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" name="genero"   onChange={this.handleInputChange} />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-sm">
-                                            <label for="basic-url">Número de páginas</label>
+                                            <label >Número de páginas</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
                                         </div>
                                         <div className="col-sm">
-                                            <label for="basic-url">Autor</label>
+                                            <label >Autor</label>
                                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"name="autor"   onChange={this.handleInputChange} />
                                         </div>
                                        

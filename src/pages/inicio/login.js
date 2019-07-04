@@ -20,40 +20,54 @@ class Login extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const { username, senha } = this.state;
-        console.log(username)
-        if (username || senha) {
-            /*
-            try {
-                await api.get("/usuario").then(res =>{
-                    
-                    const lista_user = res.data;
-                    for (var i in lista_user) {
-                        if(lista_user[i].username === username && lista_user[i].senha===senha){
-                            localStorage.setItem("user_id",lista_user[i].id);
-                        }
-                   
-                    }
-                    this.props.history.push("/perfil");
-                })    
-            } catch (err) {
-
-               
-             }
-             alert("usuario não existe")
-            */
-            try {
-                 await api.post("/usuario/login", { username, senha }).then(res =>{
-                    
-                
-                login(res.data.token);
-                console.log(res.data)
-               // this.props.history.push("/perfil");
-
-                 })
-              } catch (err) {
-                console.log(err)
-              }
         
+        
+        //var existeUsu=false
+        
+        if (username && senha) {
+                /*
+            try {
+                await api.get("/usuario").then(res => {
+
+                    const lista_user = res.data;
+                    
+                    for (var i in lista_user) {
+                        console.log(lista_user[i].username)
+                        console.log(username)
+                        if (lista_user[i].username === username && lista_user[i].senha === senha) {
+                            
+                            localStorage.setItem("user_id", lista_user[i].id);
+                            this.props.history.push("/perfil");
+                            existeUsu  = true
+                        }
+                    }     
+                })
+            } catch (err) {
+                console.log(err)
+            }
+            if(!existeUsu){
+                alert("usuario não existe")
+            }
+            */
+
+           
+             try {
+                  await api.post("/usuario/login", { username, senha }).then(res =>{
+                     
+                 
+                 login(res.data.token);
+                 console.log(res.data)
+                // this.props.history.push("/perfil");
+ 
+                  })
+               } catch (err) {
+                 console.log(err)
+               }
+         
+         
+         
+        }else{
+            alert("preencha  os campos do login")
         }
 
     }

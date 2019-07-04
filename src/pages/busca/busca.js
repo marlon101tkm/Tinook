@@ -33,87 +33,6 @@ var lista_infoE = [
         idioma: " Portugues",
         imagen: "https://livrosdefantasia.files.wordpress.com/2012/04/o-retorno-do-rei.jpg",
         autor: "J.R.R. Tokien"
-    },
-    {
-        titulo: " Harry Potter ",
-        subtitulo:"e a Ordem da Fenix",
-        genero: "Fantasia",
-        condicao: " Ótima",
-        idioma: " Portugues",
-        imagen: 'https://statics.livrariacultura.net.br/products/capas_lg/628/46583628.jpg',
-        autor: "J.K. Rowling"
-    },
-    {
-        titulo: " O Festim dos Corvos ",
-        subtitulo:"As Cronicas do Gelo e Fogo Livro Quatro",
-        genero: "Fantasia",
-        condicao: " Boa",
-        idioma: " Portugues",
-        imagen: "https://vignette.wikia.nocookie.net/gameofthrones/images/6/64/Capa_Festim_dos_Corvos.jpg/revision/latest?cb=20171018135729&path-prefix=pt-br",
-        autor: "George R.R. Martin"
-    },
-    {
-        titulo: " O Senhor dos Aneis",
-        subtitulo:" O Retorno do Rei",
-        genero: "Fantasia",
-        condicao: " Regular",
-        idioma: " Portugues",
-        imagen: "https://livrosdefantasia.files.wordpress.com/2012/04/o-retorno-do-rei.jpg",
-        autor: "J.R.R. Tokien"
-    },
-    {
-        titulo: " Harry Potter ",
-        subtitulo:"e a Ordem da Fenix",
-        genero: "Fantasia",
-        condicao: " Ótima",
-        idioma: " Portugues",
-        imagen: 'https://statics.livrariacultura.net.br/products/capas_lg/628/46583628.jpg',
-        autor: "J.K. Rowling"
-    },
-    {
-        titulo: " O Festim dos Corvos ",
-        subtitulo:"As Cronicas do Gelo e Fogo Livro Quatro",
-        genero: "Fantasia",
-        condicao: " Boa",
-        idioma: " Portugues",
-        imagen: "https://vignette.wikia.nocookie.net/gameofthrones/images/6/64/Capa_Festim_dos_Corvos.jpg/revision/latest?cb=20171018135729&path-prefix=pt-br",
-        autor: "George R.R. Martin"
-    },
-    {
-        titulo: " O Senhor dos Aneis",
-        subtitulo:" O Retorno do Rei",
-        genero: "Fantasia",
-        condicao: " Regular",
-        idioma: " Portugues",
-        imagen: "https://livrosdefantasia.files.wordpress.com/2012/04/o-retorno-do-rei.jpg",
-        autor: "J.R.R. Tokien"
-    },
-    {
-        titulo: " Harry Potter ",
-        subtitulo:"e a Ordem da Fenix",
-        genero: "Fantasia",
-        condicao: " Ótima",
-        idioma: " Portugues",
-        imagen: 'https://statics.livrariacultura.net.br/products/capas_lg/628/46583628.jpg',
-        autor: "J.K. Rowling"
-    },
-    {
-        titulo: " O Festim dos Corvos ",
-        subtitulo:"As Cronicas do Gelo e Fogo Livro Quatro",
-        genero: "Fantasia",
-        condicao: " Boa",
-        idioma: " Portugues",
-        imagen: "https://vignette.wikia.nocookie.net/gameofthrones/images/6/64/Capa_Festim_dos_Corvos.jpg/revision/latest?cb=20171018135729&path-prefix=pt-br",
-        autor: "George R.R. Martin"
-    },
-    {
-        titulo: " O Senhor dos Aneis",
-        subtitulo:" O Retorno do Rei",
-        genero: "Fantasia",
-        condicao: " Regular",
-        idioma: " Portugues",
-        imagen: "https://livrosdefantasia.files.wordpress.com/2012/04/o-retorno-do-rei.jpg",
-        autor: "J.R.R. Tokien"
     }
    
 
@@ -137,63 +56,57 @@ class  Busca extends Component{
         this.proximoLivro = this.proximoLivro.bind(this);
        
     }
-
-
-    componentDidMount() {
-       
-        var lista =[]; 
-        api.get('/livro',{
-        })
-        .then(res =>{
-            
-             const lista_info = res.data;
-             console.log(lista_info.titulo);
-             
-             for (var livro in lista_info) {
-                
-               if(lista_info[livro].usuario_id !== 2){
-
-            
-              lista.push(<CardLivroBusca titulo={lista_info[livro].titulo}
-                 subtitulo={lista_info[livro].subtitulo}
-                 genero={lista_info[livro].genero}
-                 condicao={lista_info[livro].condicao}
-                 idioma={lista_info[livro].lingua}
-                 imagen={lista_info[livro].imagen}
-                 id ={lista_info[livro].id}
-                 usuario_id ={lista_info[livro].usuario_id} /> )
-              
-               }
-             }
-             this.setState({lista_info: lista});
-             this.setState({card_livro: res.data});
-
-
-
-
-
-        })  
-        
-
-
-
-      }
-
-
-    /*
+    
+    
+    //buscan do os livros no banco
     
     componentDidMount() {
+
+        var lista = [];
+        api.get(`/livro`)
+            .then(res => {
+
+                const lista_info = res.data;
+                console.log(lista_info.titulo);
+
+                for (var i in lista_info) {
+
+                    if (lista_info[i].usuario_id !== 2) {
+
+                        lista.push(<CardLivroBusca 
+                            key={i}
+                            titulo={lista_info[i].titulo}
+                            subtitulo={lista_info[i].subtitulo}
+                            genero={lista_info[i].genero}
+                            condicao={lista_info[i].condicao}
+                            idioma={lista_info[i].lingua}
+                            imagen={lista_info[i].imagen}
+                            id={lista_info[i].id}
+                            usuario_id={lista_info[i].usuario_id} />)
+                    }
+                }
+                this.setState({ lista_info: lista });
+                this.setState({ card_livro: res.data });
+            })
+    }
+
+      
+    
+      /*
+    
+    //preenchimento com dados estaticos
+    componentDidMount() {
         
         var lista =[]; 
-        for (var livro in lista_infoE) {
+        for (var i in lista_infoE) {
 
-         lista.push(<CardLivroBusca titulo={lista_infoE[livro].titulo}
-            subtitulo={lista_infoE[livro].subtitulo}
-            genero={lista_infoE[livro].genero}
-            condicao={lista_infoE[livro].condicao}
-            idioma={lista_infoE[livro].idioma}
-            autor={lista_infoE[livro].autor}
-            imagen={lista_infoE[livro].imagen}/> )
+         lista.push(<CardLivroBusca titulo={lista_infoE[i].titulo}
+            subtitulo={lista_infoE[i].subtitulo}
+            genero={lista_infoE[i].genero}
+            condicao={lista_infoE[i].condicao}
+            idioma={lista_infoE[i].idioma}
+            autor={lista_infoE[i].autor}
+            imagen={lista_infoE[i].imagen}/> )
          
          
         }
@@ -201,30 +114,22 @@ class  Busca extends Component{
         
     }
 
-
-    */
-
-    
-    /*
-    componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        if (this.props.lista_info !== prevProps.lista_info) {
-         
-        }
-      }
 */
+    
 
-
+    //mostra o proximo livro da lista 
     proximoLivro() {
-        if (this.state.index === this.state.lista_info.length - 1)
+        if (this.state.index === this.state.lista_info.length - 1){
+            this.setState({index: 0})
             return;
-
+        }
         this.setState(prevState => ({
             index: prevState.index + 1
         }))
     }
     
 
+    // insere no banco no banco o like
     darLike = async (e)=> {     
         e.preventDefault();
         
@@ -233,7 +138,7 @@ class  Busca extends Component{
         try{
             await api.post('/gostei',{
                 livro_id: card_livro[index].id, 
-                usuario_id:  card_livro[index].usuario_id,
+                usuario_id: 1,
                 data_gostei: new Date()    
             });
             this.proximoLivro();
@@ -244,6 +149,7 @@ class  Busca extends Component{
         
     }
 
+    // insere no banco  o livro já lido
     jaLeu= async (e)=> {     
         e.preventDefault();
         const {card_livro,index} = this.state
@@ -251,7 +157,7 @@ class  Busca extends Component{
         try{
             await api.post('/leu',{
                 isbn: card_livro[index].isbn, 
-                usuario_id:  card_livro[index].usuario_id });
+                usuario_id: 1});
             this.proximoLivro();
         }catch(err) {
             console.log(err);

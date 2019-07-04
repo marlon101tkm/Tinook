@@ -11,13 +11,8 @@ class CardLivroBusca extends Component {
 
 
     render() {
-        const titulo = this.props.titulo,
-            subtitulo = this.props.subtitulo,
-            genero = this.props.genero,
-            condicao = this.props.condicao,
-            idioma = this.props.idioma,
-            imagen = this.props.imagen,
-            autor = this.props.autor
+        const { titulo,subtitulo,genero,condicao,idioma,imagen,autor} = this.props
+        
         return (
 
             <div className="card mt-6 book" style={{ width: '18em' }}>

@@ -10,12 +10,23 @@ import api from '../../services/api.js'
 
 
 class  CardLivro extends Component{
-    
+    /*
     state={
-      id: "", isbn:""
+      id: "", isbn:"",
+      titulo: "" ,
+      subtitulo: "" ,
+      genero: "" ,
+      condicao: "" ,
+      idioma: "" ,
+      imagen: "" ,
+      autor: "" ,
+      
     }
-  
+    
 
+
+    //teste para deletar o livro do banco 
+  
   deletaLivro = async (e) => {
     var id_livro_foto
     try {
@@ -47,47 +58,38 @@ class  CardLivro extends Component{
 
   }
     
+  */
+ /*
 
   componentDidMount(){
     this.setState({id: this.props.id})
     this.setState({isbn: this.props.isbn})
   }
-
+*/
 
   render() {
     // definindo constantes para poder ser acessada pelo componente pai e passadas por parametro para esse componente
-    const  titulo = this.props.titulo,
-      subtitulo = this.props.subtitulo,
-      genero = this.props.genero,
-      condicao = this.props.condicao,
-      idioma = this.props.idioma,
-      imagen = this.props.imagen,
-      autor = this.props.autor,
-      id =this.props.id,
-      isbn=this.props.isbn
-     
+
+      const { titulo, subtitulo,genero, condicao,idioma,imagen,autor} = this.props
 
     return (
 
-      <div className ="card mt-5 book-card" style={{ maxWidth: "540px" }}>
-        <div className ="row no-gutters">
-          <div className ="col-md-4">
-            <img src={imagen} className ="card-img" alt="..." />
+      <div className="card mt-5 book-card" style={{ maxWidth: "540px" }}>
+        <div className="row no-gutters">
+          <div className="col-md-4">
+            <img src={imagen} className="card-img" alt="..." />
           </div>
-          <div className ="col-md-8">
-            <div className ="card-body book-info">
+          <div className="col-md-8">
+            <div className="card-body book-info">
 
-              <button className ="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
-              <button className ="fas fa-trash-alt delete-icon"  onClick={this.deletaLivro} ><FontAwesomeIcon icon={faTrashAlt} /> </button>
-              <h6 className ="card-title">{titulo}</h6>
-              <h6 className ="card-title">{subtitulo}</h6>
-              <p className ="card-text">Autor:{autor}</p>
-              <p className ="card-text"> Genero:{genero}</p>
-              <p className ="card-text">Condição:{condicao}</p>
-              <p className ="card-text">idioma:{idioma}</p>
-             
-
-
+              <button className="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
+              <button className="fas fa-trash-alt delete-icon" onClick={this.deletaLivro} ><FontAwesomeIcon icon={faTrashAlt} /> </button>
+              <h6 className="card-title">{titulo}</h6>
+              <h6 className="card-title">{subtitulo}</h6>
+              <p className="card-text">Autor:{autor}</p>
+              <p className="card-text"> Genero:{genero}</p>
+              <p className="card-text">Condição:{condicao}</p>
+              <p className="card-text">idioma:{idioma}</p>
             </div>
           </div>
         </div>

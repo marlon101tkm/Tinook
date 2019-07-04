@@ -37,7 +37,10 @@ class BarraNav extends Component {
         this.props.history.push('/busca');
     }
 
-    
+    navegaMatch =(e)=>{
+        e.preventDefault();
+        this.props.history.push('/match');
+    }
 
     
     
@@ -65,6 +68,7 @@ class BarraNav extends Component {
                         <button type="button" className="btn mr-1 menu-btn" onClick={this.navegaEstante} >Estante</button>
                         <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaFiltro}>Filtro</button>
                         <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaPerfil}>Perfil</button>
+                        <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaMatch}>Match</button>
                         <button type="button" className="btn mr-1 menu-btn"onClick={this.navegaBusca}>Busca</button>
                     </div>
                 </nav>

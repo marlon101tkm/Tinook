@@ -1,43 +1,53 @@
 import React, { Component } from "react";
 import BarraNav from'../../barraNav.js'
 import api from "../../services/api.js";
-import { logout } from "../../services/auth.js";
 //import '../../style.css'
 
-
+/*
 const nomeU = "@joao1297";
 const nomeCom = "João";
 const emailU = "joao@gmail.com";
-
-const imagen= " https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
+const senha = "1513palrhdi"
+*/
+const imagen= "https://cdn1.iconfinder.com/data/icons/rcons-user-action/512/user-128.png"
 export default class Perfil extends Component {
 
 
     state = {
-        nomeUsuario: "", nome: "", email: ""
+        nomeUsuario: "", nome: "", email: "", senha: ""
     }
-
-    //ainda não implementado
+    
+    //busca no banco dos dados do usuario
     componentDidMount(){
-        api.get(`/usuario`,{id: 1}).then(res=>{
+        api.get(`/usuario/${1}`).then(res=>{
+            console.log(res.data.nome)
             this.setState({
                 nomeUsuario: res.data.username,
                 nome: res.data.nome,
-                email: res.data.email
+                email: res.data.email,
+                senha: res.data.senha
             })
         })
         
 
     }
+    
+    //teste com dados estaticos
+    /*
+   componentDidMount(){
+
+        this.setState({
+            nomeUsuario: nomeU,
+            nome: nomeCom,
+            email: emailU,
+            senha: senha
+        })
+
+}
+
+*/
 
 
-    //testes de vesões aneriores
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.history.push('/');
-
-
-    }
 
     render() {
         return (
@@ -51,23 +61,28 @@ export default class Perfil extends Component {
                             <img src={imagen} alt="..." className  ="img-thumbnail" />
                         </div>
                         <div className  ="col">
+                            <div className="input-group mb-4 col-xl-6">
+                                <label>Usuario: </label>
+                                <input type="text" className="form-control ml-3" aria-label="Nome"
+                                    aria-describedby="basic-addon1" defaultValue={this.state.nomeUsuario} />
+                            </div>
                             <div className ="input-group mb-4 col-xl-6">
-                                <label for="Nome">Nome: {this.state.nome} </label>
+                                <label>Nome: </label>
                                 
                                 <input type="text" className  ="form-control ml-3" aria-label="Nome"
-                                    aria-describedby="basic-addon1" />
+                                    aria-describedby="basic-addon1" defaultValue={this.state.nome} />
                             </div>
                             <div className ="input-group mb-4 col-xl-6">
-                                <label for="email">Email: {this.state.email}  </label>
+                                <label>Email:   </label>
                                 
                                 <input type="text" className ="form-control ml-3" aria-label="email" 
-                                    aria-describedby="basic-addon1" />
+                                    aria-describedby="basic-addon1" defaultValue={this.state.email} />
                             </div>
                             <div className ="input-group mb-4 col-xl-6">
-                                <label for="senha">Senha: {this.state.senha} </label>
+                                <label >Senha: </label>
                                
-                                <input type="text" className ="form-control ml-3" aria-label="Senha"
-                                    aria-describedby="basic-addon1" />
+                                <input type="password" className ="form-control ml-3" aria-label="Senha"
+                                    aria-describedby="basic-addon1"  defaultValue={this.state.senha} />
                             </div>
                         </div>
                     </div>

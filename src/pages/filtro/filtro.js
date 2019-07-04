@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import BarraNav from'../../barraNav.js'
 import api from '../../services/api.js'
 
-const nomeAutor = ['joao','pedro'];
+const nomeAutor = ['J.K.Rowling','George R.R. Martin','J.R.R.Tokien'];
 /*
 const genero=[{id:1 , nome: 'romance'}
 ,
@@ -32,14 +32,14 @@ class  Filtro extends Component{
         state={
         
             //opGenero: [],
-            idioma: "",
+            lingua: "",
             autor: "" , 
             genero: "",
-            autores: []
+           // autores: []
     
         }
    
-
+        /*
     componentDidMount(){
          api.get('/autor')
         .then(res =>{
@@ -48,23 +48,23 @@ class  Filtro extends Component{
             console.log(this.state.autores)
         })
            // console.log(this.state.autores)  
-        
+        */
 
         //this.setState({opGenero: genero.map((genero)=><option name={genero} >{genero}</option>)})
         //console.log(this.state.opGenero[1].nome)
           
      //   this.setState({opAutores: this.state.autores.map((autor)=> <option  key={autor.id} value = {autor.id} >{autor.nome}</option> ) })
        // console.log(this.state.opAutores)
-    }
+    
 
-     opAutores = this.state.autores.map((autor)=> <option  key={autor} value = {autor.id} >{autor.nome}</option>)
+     //opAutores = this.state.autores.map((autor)=> <option  key={autor} value = {autor.id} >{autor.nome}</option>)
     
     
     //testando as varieveis globais pra preenchimento das comboboxes
      //opAutores = autores.map((autor)=> <option  key={autor.id} value = {autor.id} >{autor.nome}</option> )
 
-    // opGenero = genero.map((genero)=><option name={genero} >{genero}</option>)
-    // opAutores= this.state.autores.map((autor)=> <option >{autor}</option>)
+     opGenero = genero.map((genero)=><option name={genero} >{genero}</option>)
+     opAutores= nomeAutor.map((autor)=> <option >{autor}</option>)
 
      handleInputChange = (e) => {
          if (e.target.value !== 'Selecione') {
@@ -75,10 +75,41 @@ class  Filtro extends Component{
 
     }
 
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        const {genero,lingua,autor} = this.state;
+        var jaExiste,autor_id,filtro_id;
+        api.get("/filtro").then(res=>{
+            const lista = res.data;
+            for(var i in lista){
+                if(lista[i].usuario_id === 1){
+                    jaExiste = true;
+                    filtro_id=lista[i].id
 
-    /* handleSubmit = (e) =>{
-         
-     }*/
+                }
+            }
+
+        })
+        api.get("/autor").then(res=>{
+            const lista = res.data;
+            for(var i in lista){
+                if(lista[i].nome === autor){
+                    autor_id = lista[i].id;
+                    
+                }
+            }
+
+        })
+        console.log(autor_id)
+        if(jaExiste){
+            api.put("/filtro",{id: filtro_id ,lingua, genero , autor_id})
+        }else{
+            api.post("/filtro",{lingua, genero , autor_id})
+        }
+
+    }
+
+   
 
 
     render(){
@@ -125,7 +156,7 @@ class  Filtro extends Component{
                             Idioma:
             </div>
                         <div className="col">
-                            <select name="genero" onClick={this.handleInputChange} >
+                            <select name="lingua" onClick={this.handleInputChange} >
                                 <option>Selecione</option>
                                 <option>Portugues</option>
                                 <option>Inglês</option>
@@ -133,6 +164,7 @@ class  Filtro extends Component{
                             </select>
                         </div>
                     </div>
+                    <button type='button' onClick={this.handleSubmit} >Salvar</button>
                 </div>
             </div>
 

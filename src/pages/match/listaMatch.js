@@ -1,45 +1,29 @@
 import React,{Component} from'react';
 import CardMatch from './cardMatch.js'
 import BarraNav from'../../barraNav.js'
-import api from '../../services/api.js'
+//import api from '../../services/api.js'
 
 
 
 
 
 const lista_infoE = [
-
     {
         tituloRecebeuLike: "Harry Potter e a Orndem da Fenix",
-        tituloDeuLike: "Senhordos aneis eo retorno do rei",
-        usuario: "joaoIsk"
-
+        tituloDeuLike: "Senhor dos aneis O Retorno do Rei",
+        usuario: "joaoIsk",
+    },
+    
+    {
+        tituloRecebeuLike: "Harry Potter e a Orndem da Fenix",
+        tituloDeuLike: "Senhor dos aneis O Retorno do Rei",
+        usuario: "pedro 123",
     },
     {
-        tituloRecebeuLike:"Harry Potter e a Orndem da Fenix",
-         tituloDeuLike : "Senhordos aneis eo retorno do rei",
-        usuario: "joaoIsk"
-
+        tituloRecebeuLike: "Harry Potter e a Orndem da Fenix",
+        tituloDeuLike: "Senhor dos aneis O Retorno do Rei",
+        usuario: "lucas239",
     },
-    {
-        tituloRecebeuLike:"Harry Potter e a Orndem da Fenix",
-         tituloDeuLike : "Senhordos aneis eo retorno do rei",
-        usuario: "joaoIsk"
-
-    },
-    {
-        tituloRecebeuLike:"Harry Potter e a Orndem da Fenix",
-         tituloDeuLike : "Senhordos aneis eo retorno do rei",
-        usuario: "joaoIsk"
-
-    },
-    {
-        tituloRecebeuLike:"Harry Potter e a Orndem da Fenix",
-         tituloDeuLike : "Senhordos aneis eo retorno do rei",
-        usuario: "joaoIsk"
-
-    },
-
 ];
 
 class  ListaMatch extends Component{
@@ -58,16 +42,19 @@ class  ListaMatch extends Component{
 
 
      //teste com as variaveis globais desse componente
-    /*
+    
 
     componentDidMount() {
         
         var lista =[]; 
-        for (var livro in lista_infoE) {
+        for (var i in lista_infoE) {
 
-         lista.push(<CardMatch tituloRecebeuLike={lista_infoE[livro].tituloRecebeuLike}
-            tituloDeuLike={lista_infoE[livro].tituloDeuLike}
-            usuario={lista_infoE[livro].usuario}
+         lista.push(<CardMatch 
+            key={i}
+            tituloRecebeuLike={lista_infoE[i].tituloRecebeuLike}
+            tituloDeuLike={lista_infoE[i].tituloDeuLike}
+            usuario={lista_infoE[i].usuario}
+           
            /> )
          
          
@@ -77,10 +64,10 @@ class  ListaMatch extends Component{
     }
 
 
-    */
+    
 
 
-
+    /*
 
     //preenchimento da lista com a requisição no banco sem autenticação de usuario
     componentDidMount() {
@@ -114,7 +101,7 @@ class  ListaMatch extends Component{
         })  
 
       }
-   
+   */
       
 
       /*estou utilizando o card columns pq ele organiza os cards automaticamente senão teria que implementar
