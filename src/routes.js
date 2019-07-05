@@ -30,12 +30,12 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       
-      <Route path="/match"component={ListaMatch}/>
-      <Route path="/busca"component={Busca}/>
-      <Route path="/perfilLivro" component={PerfilLivro} />
-      <Route path="/filtro" component={Filtro} />
-      <Route path="/perfil" component={Perfil} />
-      <Route path='/estante' component={Estante} />
+      <PrivateRoute path="/match"component={ListaMatch}/>
+      <PrivateRoute path="/busca"component={Busca}/>
+      <PrivateRoute path="/perfilLivro" component={PerfilLivro} />
+      <PrivateRoute path="/filtro" component={Filtro} />
+      <PrivateRoute path="/perfil" component={Perfil} />
+      <PrivateRoute path='/estante' component={Estante} />
       <Route exact path='/' component={Inicio} />
 
     </Switch>

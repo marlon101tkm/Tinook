@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
 import api from "../../services/api.js";
-import { login } from "../../services/auth";
+import { login, getToken } from "../../services/auth";
 import '../../style.css'
+import { get } from 'http';
 
 class Login extends Component {
    
@@ -55,15 +56,20 @@ class Login extends Component {
                   await api.post("/usuario/login", { username, senha }).then(res =>{
                      
                  
-                 login(res.data.token);
-                 console.log(res.data)
-                // this.props.history.push("/perfil");
- 
+                 login(res.data);
+                 console.log(localStorage.getItem("@tinook-Token"))
+                 if(!localStorage.getItem("@tinook-Token")){
+                    alert("usuario invalido!!")
+                 }else{
+                    this.props.history.push("/busca");
+                 }   
                   })
                } catch (err) {
                  console.log(err)
                }
          
+              
+ 
          
          
         }else{

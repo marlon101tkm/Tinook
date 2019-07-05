@@ -13,11 +13,8 @@ export default class Inicio extends Component{
       <div>
         <BarraNav />
         <div className='container'>
-          <div className="row">
-            <div className="col">
-
-            </div>
-            <div className="col">
+          <div className="row justify-content-center">
+            <div className="col-xs-4">
               <h1 className="ml-4 mt-3">Cadastre-se!</h1>
               <div className="mr-3">
                 <Cadastro />

@@ -57,8 +57,8 @@ class  Busca extends Component{
        
     }
     
-    
-    //buscan do os livros no banco
+   
+    //busca do os livros no banco
     
     componentDidMount() {
 
@@ -90,7 +90,6 @@ class  Busca extends Component{
             })
     }
 
-      
     
       /*
     

@@ -82,8 +82,8 @@ class  CardLivro extends Component{
           <div className="col-md-8">
             <div className="card-body book-info">
 
-              <button className="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </button>
-              <button className="fas fa-trash-alt delete-icon" onClick={this.deletaLivro} ><FontAwesomeIcon icon={faTrashAlt} /> </button>
+              <i className="fas fa-edit edit-icon" > <FontAwesomeIcon icon={faEdit} /> </i>
+              <i className="fas fa-trash-alt delete-icon" onClick={this.deletaLivro} ><FontAwesomeIcon icon={faTrashAlt} /> </i>
               <h6 className="card-title">{titulo}</h6>
               <h6 className="card-title">{subtitulo}</h6>
               <p className="card-text">Autor:{autor}</p>

@@ -84,8 +84,8 @@ class  Estante extends Component{
 
 
      //teste com as variaveis globais desse componente
-    
     /*
+    
     componentDidMount() {
         
         var lista =[]; 
@@ -107,6 +107,7 @@ class  Estante extends Component{
         
     }
 */
+
     
     
 
@@ -199,8 +200,8 @@ class  Estante extends Component{
                  }catch (err){
             console.log(err)
         }
-               
-        */
+        */       
+        
     }
 
       cadastraLivro =  (e) => {
@@ -217,28 +218,29 @@ class  Estante extends Component{
         return (
             <div>
                 <BarraNav />
-                <div className ="container">
-                    
-                    <div className ="card-columns">
+                <div className="container">
+
+                    <div className="card-columns">
+
 
                         {this.state.lista_info}
 
                         <div className ="col">
-                            <div className ="card mt-3 book-card" style={{ maxWidth: "540px" }}>
-                                <div className ="row no-gutters">
-                                    <div className ="col-md-12">
-                                        <button className ="fas fa-plus plus-icon" onClick={this.cadastraLivro} ><FontAwesomeIcon icon={faPlus}/></button>
+                            <div className ="card mt-5 book-card" style={{ maxWidth: "540px" }}>
+                                <div classame ="row no-gutters">
+                                    <div classame ="col-md-12">
+                                        <button className ="fas fa-plus plus-icon" style={{ height: "160px" }} onClick={this.cadastraLivro} ><FontAwesomeIcon icon={faPlus}/></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
+             
+                    
         )
     }
-}
-        
+}  
+           
 export default Estante;

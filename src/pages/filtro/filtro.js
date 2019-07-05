@@ -3,17 +3,6 @@ import BarraNav from'../../barraNav.js'
 import api from '../../services/api.js'
 
 const nomeAutor = ['J.K.Rowling','George R.R. Martin','J.R.R.Tokien'];
-/*
-const genero=[{id:1 , nome: 'romance'}
-,
-{id:2 ,nome:'fantasia'},
-{id:3 ,nome:'terror'},
-{id:4 ,nome:'suspense'},
-{id:5 ,nome:'comedia'},
-{id:6 ,nome:'aventura'},
-{id:7 ,nome:'auto ajuda'}];
-*/
-
 const genero=['romance',
 'fantasia',
 'terror',
@@ -25,51 +14,33 @@ const genero=['romance',
 
 
 
- //var autores = [];
 class  Filtro extends Component{
 
    
         state={
         
-            //opGenero: [],
             lingua: "",
             autor: "" , 
             genero: "",
-           // autores: []
+            autores: [],
+            opAutores: []
     
         }
    
-        /*
+        
     componentDidMount(){
          api.get('/autor')
         .then(res =>{
             this.state.autores = res.data
-           // this.setState({autores: res.data})
-            console.log(this.state.autores)
-        })
-           // console.log(this.state.autores)  
-        */
+            this.setState({autores: res.data, opAutores: res.data.map((autor)=> <option  key={autor.id} value = {autor.id} >{autor.nome}</option>)  })
+        })        
+    }
 
-        //this.setState({opGenero: genero.map((genero)=><option name={genero} >{genero}</option>)})
-        //console.log(this.state.opGenero[1].nome)
-          
-     //   this.setState({opAutores: this.state.autores.map((autor)=> <option  key={autor.id} value = {autor.id} >{autor.nome}</option> ) })
-       // console.log(this.state.opAutores)
-    
-
-     //opAutores = this.state.autores.map((autor)=> <option  key={autor} value = {autor.id} >{autor.nome}</option>)
-    
-    
-    //testando as varieveis globais pra preenchimento das comboboxes
-     //opAutores = autores.map((autor)=> <option  key={autor.id} value = {autor.id} >{autor.nome}</option> )
-
-     opGenero = genero.map((genero)=><option name={genero} >{genero}</option>)
-     opAutores= nomeAutor.map((autor)=> <option >{autor}</option>)
+     opGenero = genero.map((genero)=><option key={genero} name={genero} >{genero}</option>)
 
      handleInputChange = (e) => {
          if (e.target.value !== 'Selecione') {
              this.setState({ [e.target.name]: e.target.value });
-            // console.log({ [e.target.name]: e.target.value })
 
          }
 
@@ -113,7 +84,6 @@ class  Filtro extends Component{
 
 
     render(){
-       // opAutores= this.state.autores.map((autor)=> <option >{autor}</option>)
         return(
             <div>
                 <BarraNav />
@@ -135,7 +105,7 @@ class  Filtro extends Component{
                         <div className="col">
                             <select name="genero" onClick={this.handleInputChange} >
                                 <option>Selecione</option>
-                                <optgroup>{this.opGenero}</optgroup>
+                                {this.opGenero}
                             </select>
                         </div>
                     </div>
@@ -146,7 +116,7 @@ class  Filtro extends Component{
                         <div className="col">
                             <select name="autor" onClick={this.handleInputChange} >
                                 <option>Selecione</option>
-                                <optgroup>{this.opAutores}</optgroup>
+                                {this.state.opAutores}
 
                             </select>
                         </div>

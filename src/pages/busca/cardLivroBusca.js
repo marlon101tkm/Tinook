@@ -15,7 +15,7 @@ class CardLivroBusca extends Component {
         
         return (
 
-            <div className="card mt-6 book" style={{ width: '18em' }}>
+            <div className="card mt-6 book" style={{ width: '18em', margin: 'auto' }}>
                 <img src={imagen} className="card-img-top" alt="..." />
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item book-title">{titulo}</li>
